@@ -31,7 +31,16 @@
             </column>
             <column name="url_image" type="text"/>
         </createTable>
+    </changeSet>
 
+    <changeSet id="05.05.21" author="Birgit">
+        <addColumn tableName="books">
+            <column name="url_data" type="text"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="05.05.21 #2" author="Birgit">
+        <modifyDataType tableName="books" columnName="year_of_publishing" newDataType="text"/>
     </changeSet>
 
 </databaseChangeLog>

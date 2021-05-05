@@ -11,6 +11,15 @@ public class BookData {
     private double price;
     private String storeName;
     private String urlImage;
+    private String urlPage;
+
+    public String getUrlPage() {
+        return urlPage;
+    }
+
+    public void setUrlPage(String urlPage) {
+        this.urlPage = urlPage;
+    }
 
     public int getBookId() {
         return bookId;

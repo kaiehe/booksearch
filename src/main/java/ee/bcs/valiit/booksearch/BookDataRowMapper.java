@@ -20,6 +20,7 @@ public class BookDataRowMapper implements RowMapper<BookData> {
             response.setPrice(resultSet.getDouble("price"));
             response.setStoreName(resultSet.getString("store_name"));
             response.setUrlImage(resultSet.getString("url_image"));
+            response.setUrlPage(resultSet.getString("url_data"));
 
             return response;
         }
