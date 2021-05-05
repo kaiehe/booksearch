@@ -22,8 +22,8 @@ public class BookController {
 
     //1 meetod mille järgi frondist otsime (laseme sisestada Stringi [isbn, autor, pealkiri])
 
-    @GetMapping("/booksearch")
-    public List<BookData> searchBooks(@RequestParam String input){
+    @GetMapping("/booksearch/{input}")
+    public List<BookData> searchBooks(@PathVariable("input") String input){
         //bookService.findBookId(input);
 
         return bookService.getListOfBooks(input);
