@@ -18,16 +18,16 @@ public class CrawlerKriso {
             Elements productName = e.getElementsByClass("book-desc-wrap");
             String title = productName.get(0).getElementsByTag("a").get(0).attributes().get("title");
             String author = e.getElementsByClass("book-author").text();
-            String link = productName.get(0).getElementsByTag("a").get(0).attributes().get("href");
-//            Elements pricing = e.getElementsByClass("book-price");
-//            String price = pricing.get(0).getElementsByTag("span").get(0).attributes().get("\"");
-//            System.out.println(price);
             String productPrice = e.getElementsByClass("book-price").text();
             productPrice = productPrice.substring(7, productPrice.length() - 2);
-            System.out.println(productPrice);
-
-           // System.out.println(title + " " + author + " " + link);
-            //String productPrice = e.getElementsByClass("regular-price").text();
+            String link = productName.get(0).getElementsByTag("a").get(0).attributes().get("href");
+            Elements findIsbn = e.getElementsByClass("book-img-overlay");
+            String isbn = findIsbn.get(0).getElementsByTag("a").get(0).attributes().get("data-sku");
+            //String ISBN  =
+//            Elements productImage = e.getElementsByClass("book-img-link");
+//            String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
+//            System.out.println(imgLink);
+            System.out.println(title + " " + author + " " + isbn + " " + productPrice + " " + link);
         }
     }
 }
