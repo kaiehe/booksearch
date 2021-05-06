@@ -18,10 +18,7 @@ public class CrawlerRahvaRaamat {
         Elements elements = document.select("#endlessProducts");
         System.out.println(elements.size());
         for (Element e : elements) {
-            final String title = e.select("js-link-product").text();
-           // System.out.println(e.attributes().get("href"));
-            //System.out.println(e.attributes().get(""));
-            //System.out.println(e.text());
+             String title = e.select("js-link-product").text();
             System.out.println(title);
         }
 
