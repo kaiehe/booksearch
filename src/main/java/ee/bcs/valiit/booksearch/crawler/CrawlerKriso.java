@@ -9,7 +9,7 @@ public class CrawlerKriso {
 
     public static void main(String[] args) {
         //String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&type=instock");
-        String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210620&lim=500&format=2&type=estonian&tt=&from=0");
+        String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210620&lim=1000&format=2&type=estonian&tt=&from=0");
         Document documentKriso = Jsoup.parse(contents);
 //        String url = "https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210620&lim=500&format=2&type=estonian&tt=&from=0";
 
