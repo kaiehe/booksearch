@@ -29,4 +29,11 @@ public class BookRepository {
     }
 
 
+    public void saveApolloBooks(BookData bookData) {
+        String sql = "INSERT INTO books(book_title, author, ) VALUES(:dbBookTitle, :dbAuthor, )";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("dbBookTitle", bookData.getBookTitle());
+        jdbcTemplate.update(sql, paramMap);
+
+    }
 }

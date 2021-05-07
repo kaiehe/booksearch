@@ -17,7 +17,7 @@ public class BookDataRowMapper implements RowMapper<BookData> {
             response.setYearOfPublishing(resultSet.getString("year_of_publishing"));
             response.setNumberOfPages(resultSet.getString("number_of_pages"));
             response.setFormat(resultSet.getString("format"));
-            response.setPrice(resultSet.getDouble("price"));
+            response.setPrice(resultSet.getString("price"));
             response.setStoreName(resultSet.getString("store_name"));
             response.setUrlImage(resultSet.getString("url_image"));
             response.setUrlPage(resultSet.getString("url_data"));
