@@ -10,8 +10,10 @@ public class BookData {
     private String format;
     private String price;
     private String storeName;
+    private int storeId;
     private String urlImage;
     private String urlPage;
+
 
     public String getUrlPage() {
         return urlPage;
@@ -91,6 +93,14 @@ public class BookData {
 
     public void setStoreName(String storeName) {
         this.storeName = storeName;
+    }
+
+    public int getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
     }
 
     public String getUrlImage() {
