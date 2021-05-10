@@ -1,9 +1,13 @@
 package ee.bcs.valiit.booksearch.crawler;
 
+import ee.bcs.valiit.booksearch.BookData;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CrawlerKriso {
 
@@ -12,8 +16,10 @@ public class CrawlerKriso {
         String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210620&lim=1000&format=2&type=estonian&tt=&from=0");
         Document documentKriso = Jsoup.parse(contents);
 
+        List<BookData> bookDataListKriso = new ArrayList<>();
+
         Elements elements = documentKriso.select("ul.book-list.clearfix .list-item");
-        System.out.println(elements.size());
+        //System.out.println(elements.size());
         for (Element e : elements) {
             Elements productName = e.getElementsByClass("book-desc-wrap");
             String title = productName.get(0).getElementsByTag("a").get(0).attributes().get("title");

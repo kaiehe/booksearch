@@ -8,7 +8,7 @@ public class BookData {
     private String yearOfPublishing;
     private String numberOfPages;
     private String format;
-    private double price;
+    private String price;
     private String storeName;
     private String urlImage;
     private String urlPage;
@@ -77,11 +77,11 @@ public class BookData {
         this.format = format;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -99,5 +99,22 @@ public class BookData {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    @Override
+    public String toString() {
+        return "BookData{" +
+                "bookId=" + bookId +
+                ", bookTitle='" + bookTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", yearOfPublishing='" + yearOfPublishing + '\'' +
+                ", numberOfPages='" + numberOfPages + '\'' +
+                ", format='" + format + '\'' +
+                ", price='" + price + '\'' +
+                ", storeName='" + storeName + '\'' +
+                ", urlImage='" + urlImage + '\'' +
+                ", urlPage='" + urlPage + '\'' +
+                '}';
     }
 }
