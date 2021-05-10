@@ -9,7 +9,7 @@
     <changeSet id="03.05.21" author="Birgit">
 
         <createTable tableName="store">
-            <column name="id" type="integer" autoIncrement="true">
+            <column name="id" type="integer">
                 <constraints primaryKey="true"/>
             </column>
             <column name="store_name" type="text"/>
@@ -41,6 +41,33 @@
 
     <changeSet id="05.05.21 #2" author="Birgit">
         <modifyDataType tableName="books" columnName="year_of_publishing" newDataType="text"/>
+    </changeSet>
+
+<!--    <changeSet id="10.05.21" author="Birgit">-->
+<!--        <dropColumn tableName="store" columnName="id"/>-->
+<!--        <addColumn tableName="store">-->
+<!--            <column name="id" type="integer">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--        </addColumn>-->
+<!--    </changeSet>-->
+    <changeSet id="10.05.21" author="Birgit">
+        <insert tableName="store">
+            <column name="id" value="1"/>
+            <column name="store_name" value="Apollo"/>
+        </insert>
+        <insert tableName="store">
+            <column name="id" value="2"/>
+            <column name="store_name" value="Rahva Raamat"/>
+        </insert>
+        <insert tableName="store">
+            <column name="id" value="3"/>
+            <column name="store_name" value="Krisostomus"/>
+        </insert>
+        <insert tableName="store">
+            <column name="id" value="4"/>
+            <column name="store_name" value="Varrak"/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>
