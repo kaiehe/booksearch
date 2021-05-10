@@ -18,6 +18,7 @@ public class BookService {
     private BookRepository bookRepository;
 
     public List<BookData> getListOfBooks(String input) {
+        //input peaks olema min 3 tähte !!täiustada
         //try-catch block'i ei ole vaja kasutada listi puhul (tühi object viib errorisse)
         return bookRepository.getListOfBooks(input);
     }
