@@ -100,4 +100,21 @@ public class BookData {
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
     }
+
+    @Override
+    public String toString() {
+        return "BookData{" +
+                "bookId=" + bookId +
+                ", bookTitle='" + bookTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", yearOfPublishing='" + yearOfPublishing + '\'' +
+                ", numberOfPages='" + numberOfPages + '\'' +
+                ", format='" + format + '\'' +
+                ", price='" + price + '\'' +
+                ", storeName='" + storeName + '\'' +
+                ", urlImage='" + urlImage + '\'' +
+                ", urlPage='" + urlPage + '\'' +
+                '}';
+    }
 }

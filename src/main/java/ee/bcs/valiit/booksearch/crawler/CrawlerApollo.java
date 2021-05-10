@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.print.DocFlavor;
 import java.awt.print.Book;
@@ -15,17 +16,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class CrawlerApollo {
 
     @Autowired
-    private BookService bookService;
+    public BookService bookService;
 
+    public static void main(String[] args) {
+        //CrawlerApollo crawler = new CrawlerApollo();
+        //crawler.bookScrapingResultApollo();
+
+        String a = "20,95 €";
+        System.out.println(a.substring(0, a.length()-2).replace(",","."));
+    }
     public void bookScrapingResultApollo() {
 
         //1. Selle Crawleri teen eraldi meetodiks, et tagastaks listi
         String url = "https://www.apollo.ee/raamatud/eestikeelsed-raamatud?";
+        //String url = "https://www.apollo.ee/edetabel/raamatute-topid/eestikeelsete-raamatute-nadala-top-10?";
         List<BookData> bookDataList = new ArrayList<>();
-        for (int i = 1; i <= 470; i++) {
+        for (int i = 1; i <= 2; i++) {
             String newUrl = url + "p=" + i;
             String contents = WebReader.readWeb(newUrl);
             Document document = Jsoup.parse(contents);
@@ -45,11 +55,13 @@ public class CrawlerApollo {
                 bookData.setUrlPage(link);
                 //System.out.println(title + " " + " " + author + " " + productPrice + " " + link);
                 bookDataList.add(bookData);
-
             }
         }
+        for (BookData bookData : bookDataList) {
+            System.out.println(bookData);
+        }
      //   return bookDataList;
-        bookService.sendApolloBooks(bookDataList);
+        //bookService.sendApolloBooks(bookDataList);
     }
 
 //    public void bookData(List<Object> apolloList) {

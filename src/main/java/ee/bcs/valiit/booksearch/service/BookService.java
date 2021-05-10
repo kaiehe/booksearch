@@ -1,6 +1,7 @@
 package ee.bcs.valiit.booksearch.service;
 
 import ee.bcs.valiit.booksearch.BookData;
+import ee.bcs.valiit.booksearch.BookDataRowMapper;
 import ee.bcs.valiit.booksearch.crawler.CrawlerApollo;
 import ee.bcs.valiit.booksearch.exception.BookApplicationException;
 import ee.bcs.valiit.booksearch.repository.BookRepository;
@@ -19,18 +20,16 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-
     public List<BookData> getListOfBooks(String input) {
         //try-catch block'i ei ole vaja kasutada listi puhul (tühi object viib errorisse)
         return bookRepository.getListOfBooks(input);
     }
 
     public void sendApolloBooks(List<BookData> bookDataList) {
-        List list = new ArrayList();
+        //List list = new ArrayList();
         for (BookData books :bookDataList) {
-//            bookDataList.get()
-              //  books.setBookTitle(books.getBookTitle());
-//            List<BookData> list = new ArrayList<>();
+            System.out.println(books);
+
         }
  //       bookRepository.saveApolloBooks(BookData bookData);
     }
