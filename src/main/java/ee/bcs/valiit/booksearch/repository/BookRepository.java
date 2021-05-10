@@ -30,9 +30,14 @@ public class BookRepository {
 
 
     public void saveApolloBooks(BookData bookData) {
-        String sql = "INSERT INTO books(book_title, author, ) VALUES(:dbBookTitle, :dbAuthor, )";
+        String sql = "INSERT INTO books(book_title, author, isbn, year_of_publishing, number_of_pages, format, price, " +
+                "store_id, url_image, url_data) VALUES(:dbBookTitle, :dbAuthor, :dbIsbn, :dbYearOfPublishing, :dbNumberOfPages, :dbFormat," +
+                ":dbPrice, :dbStoreId, :dbUrlImage, :dbUrlData)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("dbBookTitle", bookData.getBookTitle());
+        paramMap.put("dbAuthor", bookData.getAuthor());
+        paramMap.put("dbIsbn", bookData.getIsbn());
+        //lõpeta meetod ja küsi Siimult kas OK store_id väärtus siia sisse hardcodeida
         jdbcTemplate.update(sql, paramMap);
 
     }
