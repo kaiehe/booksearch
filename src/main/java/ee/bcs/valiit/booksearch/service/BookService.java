@@ -17,8 +17,12 @@ import java.util.Map;
 @Service
 public class BookService {
 
+
     @Autowired
     private BookRepository bookRepository;
+
+    @Autowired
+    private CrawlerApollo crawlerApollo;
 
     public List<BookData> getListOfBooks(String input) {
         if(input.length()<3){
@@ -29,12 +33,16 @@ public class BookService {
         return bookRepository.getListOfBooks(input);
     }
 
-    public void sendApolloBooks(List<BookData> bookDataList) {
-        for (BookData bookData : bookDataList) {
-            bookRepository.saveApolloBooks(bookData);
-            //System.out.println(bookData);
-        }
+    public void connectToApolloCrawler(){
+        crawlerApollo.bookScrapingResultApollo();
     }
+
+//    public void sendApolloBooks(List<BookData> bookDataList) {
+//        for (BookData bookData : bookDataList) {
+//            bookRepository.saveApolloBooks(bookData);
+//            //System.out.println(bookData);
+//        }
+//    }
 
 
     public void sendKrisoBooks(List<BookData> bookDataList) {

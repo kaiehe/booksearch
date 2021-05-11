@@ -1,6 +1,7 @@
 package ee.bcs.valiit.booksearch.crawler;
 
 import ee.bcs.valiit.booksearch.BookData;
+import ee.bcs.valiit.booksearch.repository.BookRepository;
 import ee.bcs.valiit.booksearch.service.BookService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,8 +20,11 @@ import java.util.Map;
 @Component
 public class CrawlerApollo {
 
-    @Autowired
-    public BookService bookService;
+    private BookRepository bookRepository;
+
+    public CrawlerApollo(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     public static void main(String[] args) {
 //        CrawlerApollo crawler = new CrawlerApollo();
@@ -63,16 +67,22 @@ public class CrawlerApollo {
                 System.out.println(bookTitle + " " + " " + author + " " + price + " " + urlPage);
                 bookDataList.add(bookData);
             }
+
         }
 //        for (BookData bookData : bookDataList) {
 //            System.out.println(bookData);
 //        }
-        //   return bookDataList;
-        //bookService.sendApolloBooks(bookDataList);
+//           return bookDataList;
+        for (BookData bookData : bookDataList) {
+            // kui tahame teist korda crawleri tööle panna, siis tuleb esmalt tabel tühjendada (drop table... where store_id=1)
+            //select ja update repos kui tahame asendada/uuendada raamtute andmeid (double hinna lahtrisse)
+            bookRepository.saveApolloBooks(bookData);
+        }
+
     }
 
-    public void bookData(List<BookData> bookDataList) {
-        bookService.sendApolloBooks(bookDataList);
-    }
+//    public void bookData(List<BookData> bookDataList) {
+//        bookService.sendApolloBooks(bookDataList);
+//    }
 
 }

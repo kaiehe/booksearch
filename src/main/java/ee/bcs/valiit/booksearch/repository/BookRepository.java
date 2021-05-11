@@ -40,8 +40,8 @@ public class BookRepository {
         paramMap.put("dbYearOfPublishing", bookData.getYearOfPublishing());
         paramMap.put("dbNumberOfPages", bookData.getNumberOfPages());
         paramMap.put("dbFormat", bookData.getFormat());
-        paramMap.put("dbPrice", bookData.getStoreId());
-        paramMap.put("dbFormat", bookData.getPrice());
+        paramMap.put("dbPrice", bookData.getPrice());
+        paramMap.put("dbStoreId", bookData.getStoreId());
         paramMap.put("dbUrlImage", bookData.getUrlImage());
         paramMap.put("dbUrlData", bookData.getUrlPage());
         jdbcTemplate.update(sql,paramMap);

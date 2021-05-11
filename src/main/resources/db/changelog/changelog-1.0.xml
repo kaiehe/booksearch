@@ -22,10 +22,10 @@
             <column name="book_title" type="text"/>
             <column name="author" type="text"/>
             <column name="isbn" type="text"/>
-            <column name="year_of_publishing" type="date"/>
+            <column name="year_of_publishing" type="text"/>
             <column name="number_of_pages" type="text"/>
             <column name="format" type="text"/>
-            <column name="price" type="double"/>
+            <column name="price" type="text"/>
             <column name="store_id" type="integer">
                 <constraints foreignKeyName="fk_store_name" references="store(id)"/>
             </column>

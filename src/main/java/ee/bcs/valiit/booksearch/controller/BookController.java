@@ -1,6 +1,7 @@
 package ee.bcs.valiit.booksearch.controller;
 
 import ee.bcs.valiit.booksearch.BookData;
+import ee.bcs.valiit.booksearch.crawler.CrawlerApollo;
 import ee.bcs.valiit.booksearch.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -27,6 +28,13 @@ public class BookController {
         //bookService.findBookId(input);
 
         return bookService.getListOfBooks(input);
+    }
+
+    @GetMapping("/sendApolloBooks")
+    public void sendApolloToDatabase(){
+        bookService.connectToApolloCrawler();
+//        CrawlerApollo apollo=new CrawlerApollo();
+//        apollo.bookScrapingResultApollo();
     }
 
 
