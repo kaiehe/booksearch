@@ -21,10 +21,10 @@ public class CrawlerKriso {
     public CrawlerKriso(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //        CrawlerKriso crawler = new CrawlerKriso();
 //        crawler.bookScrapingResultKriso();
-//    }
+    }
 
     public void bookScrapingResultKriso() {
         int storeId = 3;
@@ -55,11 +55,17 @@ public class CrawlerKriso {
             //storeId on hardcode'itud üleval
             bookData.setStoreId(storeId);
             String bookFeatures = e.getElementsByClass("book-features").text();
-           // System.out.println(isbn);
+            String yearofPublishing = bookFeatures.substring(13);
+            String year = yearofPublishing.substring(0,4);
+            bookData.setYearOfPublishing(year);
+            String bookTypeInitial = bookFeatures.substring(19);
+            String format = bookTypeInitial.substring(0,5);
+            bookData.setFormat(format);
             bookDataList.add(bookData);
-//            Elements productImage = e.getElementsByClass("book-img link");
-//            String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
-//            System.out.println(imgLink);
+            Elements productImage = e.getElementsByClass("book-img-link");
+            String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("data-original");
+            String imgUrl = "www.kriso.ee"+imgLink;
+            bookData.setUrlImage(imgUrl);
 //            System.out.println(bookTitle + " " + author + " " + isbn + " " + price + " " + urlPage);
         }
 
