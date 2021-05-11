@@ -3,6 +3,7 @@ package ee.bcs.valiit.booksearch.service;
 import ee.bcs.valiit.booksearch.BookData;
 import ee.bcs.valiit.booksearch.BookDataRowMapper;
 import ee.bcs.valiit.booksearch.crawler.CrawlerApollo;
+import ee.bcs.valiit.booksearch.crawler.CrawlerKriso;
 import ee.bcs.valiit.booksearch.exception.BookApplicationException;
 import ee.bcs.valiit.booksearch.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class BookService {
     @Autowired
     private CrawlerApollo crawlerApollo;
 
+    @Autowired
+    private CrawlerKriso crawlerKriso;
+
     public List<BookData> getListOfBooks(String input) {
         if(input.length()<3){
             throw new BookApplicationException("Liiga lühike sisend");
@@ -37,16 +41,10 @@ public class BookService {
         crawlerApollo.bookScrapingResultApollo();
     }
 
-//    public void sendApolloBooks(List<BookData> bookDataList) {
-//        for (BookData bookData : bookDataList) {
-//            bookRepository.saveApolloBooks(bookData);
-//            //System.out.println(bookData);
-//        }
-//    }
+    public void connectToKrisoCrawler(){
+        crawlerKriso.bookScrapingResultKriso();
 
-
-    public void sendKrisoBooks(List<BookData> bookDataList) {
-        for (BookData bookData:  bookDataList) {
-        }
     }
+
+
 }

@@ -29,7 +29,7 @@ public class BookRepository {
     }
 
 
-    public void saveApolloBooks(BookData bookData) {
+    public void saveBooks(BookData bookData) {
         String sql = "INSERT INTO books(book_title, author, isbn, year_of_publishing, number_of_pages, format, price, " +
                 "store_id, url_image, url_data) VALUES(:dbBookTitle, :dbAuthor, :dbIsbn, :dbYearOfPublishing, :dbNumberOfPages, :dbFormat," +
                 ":dbPrice, :dbStoreId, :dbUrlImage, :dbUrlData)";
@@ -46,7 +46,17 @@ public class BookRepository {
         paramMap.put("dbUrlData", bookData.getUrlPage());
         jdbcTemplate.update(sql,paramMap);
 
-        //hardcode'ime Liquibase'i teise tabli sisse
-
     }
+
+    public void deleteBooks(int storeId){
+        String sqlDelete="DELETE FROM books WHERE store_id=:dbStoreId";
+        Map<String, Object> paramMap=new HashMap<>();
+        paramMap.put("dbStoreId", storeId);
+        jdbcTemplate.update(sqlDelete, paramMap);
+    }
+
+
+    //select meetod, et saaksime võrrelda andmebaasis olevaid andmeid:
+
+    //update meetod, et saaksime uuendada andmebaasis olevaid andmeid:
 }

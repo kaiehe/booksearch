@@ -37,5 +37,10 @@ public class BookController {
 //        apollo.bookScrapingResultApollo();
     }
 
+    @GetMapping("/sendKrisoBooks")
+    public void sendKrisoBooks(){
+        bookService.connectToKrisoCrawler();
+    }
+
 
 }

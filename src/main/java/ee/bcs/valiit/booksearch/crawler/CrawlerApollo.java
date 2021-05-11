@@ -26,15 +26,9 @@ public class CrawlerApollo {
         this.bookRepository = bookRepository;
     }
 
-    public static void main(String[] args) {
-//        CrawlerApollo crawler = new CrawlerApollo();
-//        crawler.bookScrapingResultApollo();
-
-//        String a = "20,95 €";
-//        System.out.println(a.substring(0, a.length()-2).replace(",","."));
-    }
 
     public void bookScrapingResultApollo() {
+        int storeId = 1;
 
         //1. Selle Crawleri teen eraldi meetodiks, et tagastaks listi
         String url = "https://www.apollo.ee/raamatud/eestikeelsed-raamatud?";
@@ -59,7 +53,7 @@ public class CrawlerApollo {
                 bookData.setPrice(price);
                 String urlPage = productName.get(0).getElementsByTag("a").get(0).attributes().get("href");
                 bookData.setUrlPage(urlPage);
-                int storeId = 1;
+                //int storeId = 1;
                 bookData.setStoreId(storeId);
                 Elements productImage = e.getElementsByClass("image-wrapper");
                 String urlImage = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
@@ -69,14 +63,17 @@ public class CrawlerApollo {
             }
 
         }
-//        for (BookData bookData : bookDataList) {
-//            System.out.println(bookData);
-//        }
-//           return bookDataList;
+
+        // kui tahame teist korda crawleri tööle panna, siis tuleb esmalt tabel tühjendada:
+
+        bookRepository.deleteBooks(storeId);
+
         for (BookData bookData : bookDataList) {
-            // kui tahame teist korda crawleri tööle panna, siis tuleb esmalt tabel tühjendada (drop table... where store_id=1)
-            //select ja update repos kui tahame asendada/uuendada raamtute andmeid (double hinna lahtrisse)
-            bookRepository.saveApolloBooks(bookData);
+
+            //select ja update repos kui tahame asendada/uuendada raamtute andmeid,
+            // siis ei kasuta deleteApolloBooks meetodit (double hinna lahtrisse)
+
+            bookRepository.saveBooks(bookData);
         }
 
     }
