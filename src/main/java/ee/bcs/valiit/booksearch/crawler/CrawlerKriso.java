@@ -47,14 +47,14 @@ public class CrawlerKriso {
             Elements findIsbn = e.getElementsByClass("book-img-overlay");
             String isbn = findIsbn.get(0).getElementsByTag("a").get(0).attributes().get("data-sku");
             bookData.setIsbn(isbn);
-            int storeId = 2;
+            int storeId = 3;
             bookData.setStoreId(storeId);
             String bookFeatures = e.getElementsByClass("book-features").text();
            // System.out.println(isbn);
             bookDataList.add(bookData);
-            Elements productImage = e.getElementsByClass("book-img link");
-            String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
-            System.out.println(imgLink);
+//            Elements productImage = e.getElementsByClass("book-img link");
+//            String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
+//            System.out.println(imgLink);
 //            System.out.println(bookTitle + " " + author + " " + isbn + " " + price + " " + urlPage);
         }
     }
