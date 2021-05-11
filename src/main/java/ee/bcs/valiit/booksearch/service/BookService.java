@@ -30,13 +30,15 @@ public class BookService {
     }
 
     public void sendApolloBooks(List<BookData> bookDataList) {
-        //List list = new ArrayList();
-        for (BookData books :bookDataList) {
-            System.out.println(books);
-
+        for (BookData bookData : bookDataList) {
+            bookRepository.saveApolloBooks(bookData);
+            //System.out.println(bookData);
         }
- //       bookRepository.saveApolloBooks(BookData bookData);
     }
 
 
+    public void sendKrisoBooks(List<BookData> bookDataList) {
+        for (BookData bookData:  bookDataList) {
+        }
+    }
 }

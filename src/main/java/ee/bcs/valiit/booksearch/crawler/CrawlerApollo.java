@@ -23,12 +23,13 @@ public class CrawlerApollo {
     public BookService bookService;
 
     public static void main(String[] args) {
-        //CrawlerApollo crawler = new CrawlerApollo();
-        //crawler.bookScrapingResultApollo();
+        CrawlerApollo crawler = new CrawlerApollo();
+        crawler.bookScrapingResultApollo();
 
-        String a = "20,95 €";
-        System.out.println(a.substring(0, a.length()-2).replace(",","."));
+//        String a = "20,95 €";
+//        System.out.println(a.substring(0, a.length()-2).replace(",","."));
     }
+
     public void bookScrapingResultApollo() {
 
         //1. Selle Crawleri teen eraldi meetodiks, et tagastaks listi
@@ -45,27 +46,33 @@ public class CrawlerApollo {
             for (Element e : elements) {
                 BookData bookData = new BookData();
                 Elements productName = e.getElementsByClass("product-name");
-                String title = productName.get(0).getElementsByTag("a").get(0).attributes().get("title");
-                bookData.setBookTitle(title);
+                String bookTitle = productName.get(0).getElementsByTag("a").get(0).attributes().get("title");
+                bookData.setBookTitle(bookTitle);
                 String author = e.getElementsByClass("author").text();
                 bookData.setAuthor(author);
-                String productPrice = e.getElementsByClass("regular-price").text();
-                bookData.setPrice(productPrice);
-                String link = productName.get(0).getElementsByTag("a").get(0).attributes().get("href");
-                bookData.setUrlPage(link);
-                //System.out.println(title + " " + " " + author + " " + productPrice + " " + link);
+                String price = e.getElementsByClass("regular-price").text();
+                //String priceToDouble = price.(0, price.length()-2);
+                bookData.setPrice(price);
+                String urlPage = productName.get(0).getElementsByTag("a").get(0).attributes().get("href");
+                bookData.setUrlPage(urlPage);
+                int storeId = 1;
+                bookData.setStoreId(storeId);
+                Elements productImage = e.getElementsByClass("image-wrapper");
+                String urlImage = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
+                bookData.setUrlImage(urlImage);
+                System.out.println(bookTitle + " " + " " + author + " " + price + " " + urlPage);
                 bookDataList.add(bookData);
             }
         }
-        for (BookData bookData : bookDataList) {
-            System.out.println(bookData);
-        }
-     //   return bookDataList;
+//        for (BookData bookData : bookDataList) {
+//            System.out.println(bookData);
+//        }
+        //   return bookDataList;
         //bookService.sendApolloBooks(bookDataList);
     }
 
-//    public void bookData(List<Object> apolloList) {
-//        bookService.sendApolloBooks(apolloList);
-//    }
+    public void bookData(List<BookData> bookDataList) {
+        bookService.sendApolloBooks(bookDataList);
+    }
 
 }
