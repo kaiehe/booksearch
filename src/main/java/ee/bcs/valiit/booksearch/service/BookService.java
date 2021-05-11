@@ -4,6 +4,7 @@ import ee.bcs.valiit.booksearch.BookData;
 import ee.bcs.valiit.booksearch.BookDataRowMapper;
 import ee.bcs.valiit.booksearch.crawler.CrawlerApollo;
 import ee.bcs.valiit.booksearch.crawler.CrawlerKriso;
+import ee.bcs.valiit.booksearch.crawler.CrawlerRaamatukoi;
 import ee.bcs.valiit.booksearch.exception.BookApplicationException;
 import ee.bcs.valiit.booksearch.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class BookService {
     @Autowired
     private CrawlerKriso crawlerKriso;
 
+    @Autowired
+    private CrawlerRaamatukoi crawlerRaamatukoi;
+
+    //raamatukoi
+
     public List<BookData> getListOfBooks(String input) {
         if(input.length()<3){
             throw new BookApplicationException("Liiga lühike sisend");
@@ -43,7 +49,10 @@ public class BookService {
 
     public void connectToKrisoCrawler(){
         crawlerKriso.bookScrapingResultKriso();
+    }
 
+    public void connectToRaamatukoiCrawler(){
+        crawlerRaamatukoi.bookScrapingResultRaamatukoi();
     }
 
 

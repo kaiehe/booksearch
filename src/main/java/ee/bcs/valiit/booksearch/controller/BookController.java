@@ -42,5 +42,10 @@ public class BookController {
         bookService.connectToKrisoCrawler();
     }
 
+    @GetMapping("/sendRaamatukoiBooks")
+    public void sendRaamatukoiBooks(){
+        bookService.connectToRaamatukoiCrawler();
+    }
+
 
 }
