@@ -23,8 +23,8 @@ public class CrawlerApollo {
     public BookService bookService;
 
     public static void main(String[] args) {
-        CrawlerApollo crawler = new CrawlerApollo();
-        crawler.bookScrapingResultApollo();
+//        CrawlerApollo crawler = new CrawlerApollo();
+//        crawler.bookScrapingResultApollo();
 
 //        String a = "20,95 €";
 //        System.out.println(a.substring(0, a.length()-2).replace(",","."));
