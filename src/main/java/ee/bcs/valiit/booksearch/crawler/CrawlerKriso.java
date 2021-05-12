@@ -66,7 +66,6 @@ public class CrawlerKriso {
             String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("data-original");
             String imgUrl = "www.kriso.ee"+imgLink;
             bookData.setUrlImage(imgUrl);
-//            System.out.println(bookTitle + " " + author + " " + isbn + " " + price + " " + urlPage);
         }
 
         bookRepository.deleteBooks(storeId);
@@ -75,8 +74,5 @@ public class CrawlerKriso {
             bookRepository.saveBooks(bookData);
         }
     }
-    //public void bookData(List<BookData> bookDataList) {
-       // bookService.sendKrisoBooks(bookDataList);
-   // }
 
 }

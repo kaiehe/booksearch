@@ -86,8 +86,4 @@ public class CrawlerApollo {
 
     }
 
-//    public void bookData(List<BookData> bookDataList) {
-//        bookService.sendApolloBooks(bookDataList);
-//    }
-
 }
