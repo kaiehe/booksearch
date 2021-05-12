@@ -48,9 +48,24 @@ public class CrawlerRaamatukoi {
                 String urlData = productUrl.get(0).getElementsByTag("a").get(0).attributes().get("href");
                 bookData.setUrlPage(urlData);
 
+                String productUrl2 = urlData;
+                String contents2 = WebReader.readWeb(productUrl2);
+                Document document1 = Jsoup.parse(contents2);
+                Elements elements1 = document1.select("tr");
+                for (Element e1 : elements1) {
+                    String listItem = e1.getElementsContainingText("köide").text();
+                    if (!listItem.isBlank()) {
+                        String format = listItem.substring(6);
+                        bookData.setFormat(format);
+//                        String listItem2 = e1.getElementsContainingText("EAN").text();
+//                        if (!listItem2.isBlank()) {
+//                            String isbn = listItem2.substring(4, listItem2.length() - 4);
+//                            bookData.setIsbn(isbn);
+//                    }
+                    }
+                }
                 bookData.setStoreId(storeId);
                 bookDataList.add(bookData);
-                //System.out.println(autor + " " + bookTitle + " " + yearOfPublishing);
             }
         }
         bookRepository.deleteBooks(storeId);
