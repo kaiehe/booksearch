@@ -63,6 +63,7 @@ public class BookController {
     }
 
 
+    //BooksearchApplicationisse tuleb lisada @EnableScheduling, et ajastamine töötaks
     @Scheduled(fixedDelay = 1000*60*60*24)
     public void sendAllBooksToDatabase(){
         crawlerApollo.bookScrapingResultApollo();
