@@ -59,7 +59,7 @@ public class CrawlerKriso {
             String year = yearofPublishing.substring(0,4);
             bookData.setYearOfPublishing(year);
             String bookTypeInitial = bookFeatures.substring(19);
-            String format = bookTypeInitial.substring(0,5);
+            String format = bookTypeInitial.substring(0,11);
             bookData.setFormat(format);
             bookDataList.add(bookData);
             Elements productImage = e.getElementsByClass("book-img-link");

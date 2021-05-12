@@ -49,24 +49,44 @@ public class CrawlerApollo {
                 String author = e.getElementsByClass("author").text();
                 bookData.setAuthor(author);
                 String price = e.getElementsByClass("regular-price").text();
+                if (price != "") {
+                    bookData.setPrice(price);
+                } else continue;
                 //String priceToDouble = price.(0, price.length()-2);
-                bookData.setPrice(price);
                 String urlPage = productName.get(0).getElementsByTag("a").get(0).attributes().get("href");
                 bookData.setUrlPage(urlPage);
+
+                String productUrl = urlPage;
+                String contents2 = WebReader.readWeb(productUrl);
+                Document document1 = Jsoup.parse(contents2);
+                Elements elements1 = document1.select("ul");
+                for (Element e1 : elements1) {
+                    String listItem = e1.getElementsContainingText("Kirjastus").text();
+                    if (!listItem.isBlank()) {
+                        int index = listItem.indexOf("formaat:");
+                        String format = listItem.substring(index + 9, index + 23);
+                        bookData.setFormat(format);
+                        int index2 = listItem.indexOf("aasta:");
+                        String year = listItem.substring(index2 + 7, index2 + 11);
+                        bookData.setYearOfPublishing(year);
+                        int index3 = listItem.indexOf("Ribakood:");
+                        String isbn = listItem.substring(index3 + 10, index3 + 23);
+                        bookData.setIsbn(isbn);
+                    }
+                }
                 //int storeId = 1;
                 bookData.setStoreId(storeId);
                 Elements productImage = e.getElementsByClass("image-wrapper");
                 String urlImage = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
                 bookData.setUrlImage(urlImage);
-                int index = urlImage.lastIndexOf("/");
-                String isbn = urlImage.substring(index + 1, urlImage.length() - 4);
-                index = isbn.indexOf("_");
-                if (index >= 0){
-                    isbn = isbn.substring(0, index);
-                }
-                else isbn=urlImage.substring(urlImage.lastIndexOf("/")+1, urlImage.length()-4);
-                //System.out.println(isbn);
-                bookData.setIsbn(isbn);
+//                int index = urlImage.lastIndexOf("/");
+//                String isbn = urlImage.substring(index + 1, urlImage.length() - 4);
+//                index = isbn.indexOf("_");
+//                if (index >= 0) {
+//                    isbn = isbn.substring(0, index);
+//                } else isbn = urlImage.substring(urlImage.lastIndexOf("/") + 1, urlImage.length() - 4);
+//                //System.out.println(isbn);
+//                bookData.setIsbn(isbn);
                 bookDataList.add(bookData);
             }
 
