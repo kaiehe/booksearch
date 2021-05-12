@@ -20,7 +20,7 @@ public class BookRepository {
 
     public List<BookData> getListOfBooks(String input) {
 
-        String sql="SELECT * FROM books b JOIN store s ON b.store_id=s.id WHERE UPPER(book_title) " +
+        String sql="SELECT * FROM books b JOIN stores s ON b.store_id=s.id WHERE UPPER(book_title) " +
                 "LIKE UPPER(:dbInput) OR UPPER(author) LIKE UPPER(:dbInput) OR isbn LIKE :dbInput";
         Map<String, Object> paramMap=new HashMap<>();
         paramMap.put("dbInput", "%"+input+"%");
@@ -31,8 +31,8 @@ public class BookRepository {
 
     public void saveBooks(BookData bookData) {
         String sql = "INSERT INTO books(book_title, author, isbn, year_of_publishing, number_of_pages, format, price, " +
-                "store_id, url_image, url_data) VALUES(:dbBookTitle, :dbAuthor, :dbIsbn, :dbYearOfPublishing, :dbNumberOfPages, :dbFormat," +
-                ":dbPrice, :dbStoreId, :dbUrlImage, :dbUrlData)";
+                "store_id, url_image, url_page) VALUES(:dbBookTitle, :dbAuthor, :dbIsbn, :dbYearOfPublishing, :dbNumberOfPages, :dbFormat," +
+                ":dbPrice, :dbStoreId, :dbUrlImage, :dbUrlPage)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("dbBookTitle", bookData.getBookTitle());
         paramMap.put("dbAuthor", bookData.getAuthor());
@@ -43,7 +43,7 @@ public class BookRepository {
         paramMap.put("dbPrice", bookData.getPrice());
         paramMap.put("dbStoreId", bookData.getStoreId());
         paramMap.put("dbUrlImage", bookData.getUrlImage());
-        paramMap.put("dbUrlData", bookData.getUrlPage());
+        paramMap.put("dbUrlPage", bookData.getUrlPage());
         jdbcTemplate.update(sql,paramMap);
 
     }
