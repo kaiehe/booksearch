@@ -55,8 +55,8 @@ public class CrawlerRaamatukoi {
             }
         }
 
-//        for (BookData bookData : bookDataList) {
-//            bookRepository.saveBooks(bookData);
-//        }
+        for (BookData bookData : bookDataList) {
+            bookRepository.saveBooks(bookData);
+        }
     }
 }

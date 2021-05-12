@@ -58,7 +58,15 @@ public class CrawlerApollo {
                 Elements productImage = e.getElementsByClass("image-wrapper");
                 String urlImage = productImage.get(0).getElementsByTag("img").get(0).attributes().get("src");
                 bookData.setUrlImage(urlImage);
-                System.out.println(bookTitle + " " + " " + author + " " + price + " " + urlPage);
+                int index = urlImage.lastIndexOf("/");
+                String isbn = urlImage.substring(index + 1, urlImage.length() - 4);
+                index = isbn.indexOf("_");
+                if (index >= 0){
+                    isbn = isbn.substring(0, index);
+                }
+                else isbn=urlImage.substring(urlImage.lastIndexOf("/")+1, urlImage.length()-4);
+                //System.out.println(isbn);
+                bookData.setIsbn(isbn);
                 bookDataList.add(bookData);
             }
 
@@ -77,9 +85,5 @@ public class CrawlerApollo {
         }
 
     }
-
-//    public void bookData(List<BookData> bookDataList) {
-//        bookService.sendApolloBooks(bookDataList);
-//    }
 
 }
