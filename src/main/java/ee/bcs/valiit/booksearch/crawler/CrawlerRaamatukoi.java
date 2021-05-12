@@ -19,10 +19,9 @@ public class CrawlerRaamatukoi {
         this.bookRepository = bookRepository;
     }
 
-    public static void main(String[] args) {
-    }
 
     public void bookScrapingResultRaamatukoi() {
+        int storeId = 4;
         String url = "https://www.raamatukoi.ee/uued-raamatud?";
         List<BookData> bookDataList = new ArrayList<>();
 
@@ -48,12 +47,13 @@ public class CrawlerRaamatukoi {
                 Elements productUrl = e.getElementsByTag("strong");
                 String urlData = productUrl.get(0).getElementsByTag("a").get(0).attributes().get("href");
                 bookData.setUrlPage(urlData);
-                int storeId = 4;
+
                 bookData.setStoreId(storeId);
                 bookDataList.add(bookData);
                 //System.out.println(autor + " " + bookTitle + " " + yearOfPublishing);
             }
         }
+        bookRepository.deleteBooks(storeId);
 
         for (BookData bookData : bookDataList) {
             bookRepository.saveBooks(bookData);
