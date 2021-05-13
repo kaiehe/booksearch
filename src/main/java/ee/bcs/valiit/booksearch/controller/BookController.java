@@ -47,35 +47,29 @@ public class BookController {
 
     @GetMapping("/booksearch/{input}")
     public List<BookData> searchBooks(@PathVariable("input") String input) {
-        //bookService.findBookId(input);
-
-        return bookService.getListOfBooks(input);
+                return bookService.getListOfBooks(input);
     }
 
-    //@GetMapping("/sendApolloBooks")
+    @GetMapping("/sendApolloBooks")
     public void sendApolloToDatabase() {
         bookService.connectToApolloCrawler();
         bookService.connectToApolloCrawler2();
-//        CrawlerApollo apollo=new CrawlerApollo();
-//        apollo.bookScrapingResultApollo();
     }
 
- //   @GetMapping("/sendKrisoBooks")
-
+    @GetMapping("/sendKrisoBooks")
     public void sendKrisoBooks() {
         bookService.connectToKrisoCrawler();
         bookService.connectToKrisoCrawler2();
     }
 
 
-  //  @GetMapping("/sendRaamatukoiBooks")
-  @Scheduled(fixedDelay = 1000 * 60 * 60)
+    @GetMapping("/sendRaamatukoiBooks")
     public void sendRaamatukoiBooks() {
-      System.out.println("Started raamatukoi crawler");
+        System.out.println("Started raamatukoi crawler");
         bookService.connectToRaamatukoiCrawler();
-      System.out.println("Started raamatukoi second crawler");
-      bookService.connectToRaamatukoiCrawler2();
-      System.out.println("Finished raamatuko crawler");
+        System.out.println("Started raamatukoi second crawler");
+        bookService.connectToRaamatukoiCrawler2();
+        System.out.println("Finished raamatukoi crawler");
     }
 
 //   // @GetMapping("/sendRaamatukoiBooks2")
@@ -91,12 +85,6 @@ public class BookController {
         crawlerRaamatukoi.bookScrapingResultRaamatukoi();
     }
 
-//    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
-//    public void sendAllBooksToDatabase2() {
-//        crawlerRaamatukoi2.bookScrapingResultRaamatukoi2();
-//        crawlerApollo.bookScrapingResultApollo();
-//        crawlerKriso.bookScrapingResultKriso();
-//
-//    }
+
 
 }
