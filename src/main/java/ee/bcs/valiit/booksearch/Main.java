@@ -7,7 +7,10 @@ public class Main {
 //        System.out.println(getIsbn(a));
 //        System.out.println(getIsbn(b));
         String c = "Alapealkiri: Kuidas toetada kõnehilistusega lapse kõne arengut Tootekood: 9789916629024 Ribakood: 9789916629024 Lisamise aeg: 29.04.2021 Autor: Kristi Sarapuu, Merit Hallap Kirjastus: OÜ Studium Ilmumisaasta: 2021 Keel: Eesti Raamatu formaat: Pehmekaaneline Lehekülgi: 64 Mõõdud: 235x165x10 Kirjastus: OÜ Studium Kirjastus:";
-        System.out.println(getFormat(c));
+        String d = "Köide pehme Köide";
+ //       System.out.println(getFormatKoi(d));
+        String e = "EAN 9789916961001 EAN";
+        System.out.println(getFormatKoi(e));
     }
 
     private static String getIsbn(String a) {
@@ -25,6 +28,15 @@ public class Main {
 //        c = c.substring(index);
         c = c.substring(index+10, index+23);
         return c;
+    }
+
+    private static String getFormatKoi(String e) {
+//        int index = d.indexOf("Ribakood:");
+//        c = c.substring(index);
+//        d = d.substring(index+10, index+23);
+//        e = e.substring(4);
+        e = e.substring(4, e.length()-4);
+        return e;
     }
 
 

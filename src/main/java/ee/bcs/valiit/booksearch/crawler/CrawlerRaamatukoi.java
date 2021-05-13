@@ -25,7 +25,7 @@ public class CrawlerRaamatukoi {
         String url = "https://www.raamatukoi.ee/uued-raamatud?";
         List<BookData> bookDataList = new ArrayList<>();
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 36; i++) {
             String newUrl = url + "p=" + i;
             String contents = WebReader.readWeb(newUrl);
             Document document = Jsoup.parse(contents);
