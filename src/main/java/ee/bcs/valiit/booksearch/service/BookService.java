@@ -2,9 +2,7 @@ package ee.bcs.valiit.booksearch.service;
 
 import ee.bcs.valiit.booksearch.BookData;
 import ee.bcs.valiit.booksearch.BookDataRowMapper;
-import ee.bcs.valiit.booksearch.crawler.CrawlerApollo;
-import ee.bcs.valiit.booksearch.crawler.CrawlerKriso;
-import ee.bcs.valiit.booksearch.crawler.CrawlerRaamatukoi;
+import ee.bcs.valiit.booksearch.crawler.*;
 import ee.bcs.valiit.booksearch.exception.BookApplicationException;
 import ee.bcs.valiit.booksearch.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +25,24 @@ public class BookService {
     private CrawlerApollo crawlerApollo;
 
     @Autowired
+    private CrawlerApollo2 crawlerApollo2;
+
+    @Autowired
     private CrawlerKriso crawlerKriso;
+
+    @Autowired
+    private CrawlerKriso2 crawlerKriso2;
 
     @Autowired
     private CrawlerRaamatukoi crawlerRaamatukoi;
 
+    @Autowired
+    private CrawlerRaamatukoi2 crawlerRaamatukoi2;
+
     //raamatukoi
 
     public List<BookData> getListOfBooks(String input) {
-        if(input.length()<3){
+        if (input.length() < 3) {
             throw new BookApplicationException("Liiga lühike sisend");
         }
         //input peaks olema min 3 tähte !!täiustada
@@ -43,16 +50,28 @@ public class BookService {
         return bookRepository.getListOfBooks(input);
     }
 
-    public void connectToApolloCrawler(){
+    public void connectToApolloCrawler() {
         crawlerApollo.bookScrapingResultApollo();
     }
 
-    public void connectToKrisoCrawler(){
+    public void connectToApolloCrawler2() {
+        crawlerApollo2.bookScrapingResultApollo2();
+    }
+
+    public void connectToKrisoCrawler() {
         crawlerKriso.bookScrapingResultKriso();
     }
 
-    public void connectToRaamatukoiCrawler(){
+    public void cconnectToKrisoCrawler2() {
+        crawlerKriso2.bookScrapingResultKriso2();
+    }
+
+    public void connectToRaamatukoiCrawler() {
         crawlerRaamatukoi.bookScrapingResultRaamatukoi();
+    }
+
+    public void connectToRaamatukoiCrawler2() {
+        crawlerRaamatukoi2.bookScrapingResultRaamatukoi2();
     }
 
 

@@ -1,0 +1,115 @@
+.my-font{                               /*Uus font Montserrat */
+    font-family: Montserrat;
+    font-size:x-large;
+    font-weight: bold;
+}
+.my-background{                         /*Pildi tausta blokk */
+    background: no-repeat url("/image_bookstore2.jpg");
+    background-size: cover;
+    height: 500px;
+}
+.intro-text {                           /*Pildil oleva teksti stiil */
+    color: #cbf1f1;
+    font-size: 86px;
+    width: 800px;
+    padding-top: 100px;
+    margin: 0 auto;                     /*joondab keskele (mitte vasakule)*/
+}
+.v-application .intro-text{             /*Pildil olev tekst kahel real, teksti reavahe väiksem*/
+    line-height: 1.1;
+}
+
+.theme--light.v-text-field--solo.my-searchBlock > .v-input__control > .v-input__slot{   /*OTSI kasti taust rohekas */
+    background: #cbf1f1;
+}
+.my-background .my-searchBlock {        /*OTSI kasti tekstivärv, laius ja asetus */
+    color:black;
+    width: 650px;
+    display: inline-block;              /*inline-block otsi-blokk ja otsi-nupp üksteise kõrval(erinevad stiilid). INLINE: üksteise kõrval, BLOCK: üksteise all.*/
+}
+.v-btn:not(.v-btn--round).v-size--default.search-button{    /*OTSI nupp värv, kõrgus ja joondus vasakult */
+     background-color: #136581;
+     height: 48px;
+     margin-left: 4px;
+     color: white;
+     font-weight: bold;
+ }
+
+.headline1{                             /*"Leitud raamatud tekst: joondus ülevalt/alt, teksti värv, suurus" */
+    font-family: Montserrat;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    color: #103c3c;
+    font-size: 46px;
+    font-weight: bolder;
+}
+.regular-text{                          /*ERROR message teksti stiil*/
+    font-family: Montserrat;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    color: black;
+    font-size: 26px;
+    font-weight: normal;
+}
+
+.v-list-item__title.book-headline{      /*Raamatu pealkiri ja autor*/
+    font-family: Montserrat;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: black;
+    font-size: 18px;
+    font-weight: inherit;
+    text-align: center;
+    white-space: normal;                /*Et pealkiri wrapiks teistele ridadele, muidu 1-se rea lõpus ...*/
+}
+.book-regular-text{                     /*Raamatu väike tekst*/
+    font-family: Montserrat;
+    margin-bottom: 2px;
+    color: black;
+    font-size: 10px;
+    font-weight: inherit;
+    text-align: left;
+    margin-left: 16px;
+}
+.v-card .v-list-item__content{          /*TÜHIK: v-card sees on järgmine element, millel on oma class*/
+    padding: 6px 0;                     /*ülevalt ja alt on 6px, paremalt ja vasakult 0px*/
+    /*border: 1px solid red;              !*HACK: testid millele padding tekkis, tekitab punased ääred*!*/
+}
+.v-list-item__title.book-price{         /*Raamatu hind*/
+    font-family: Montserrat;
+    margin-bottom: 2px;
+    color: darkred;
+    font-size: 24px;
+    font-weight: inherit;
+    text-align: left;
+    margin-left: 12px;
+    /*flex: none;*/
+}
+.v-list-item__content.book-price{       /*Et hind mahuks täielikult reale ära */
+    flex: none;
+}
+
+.v-card__actions.book-price-alignment{  /*hinnablokk bottom joondus*/
+    position: absolute;                 /*Kehtib kogu classile*/
+    bottom: 0;                          /*viib alla*/
+    left: 0;                            /*joondab vasakule*/
+    width: 100%;                        /*vanem elemendi laiuses*/
+}
+.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--light.v-size--default.buy-button{
+    background-color: #136581;
+    height: 48px;
+    color: white;
+    font-weight: bold;
+}
+
+.mx-auto.theme--light.my-vcard{         /*v-card stiil*/
+    padding: 8px 8px 50px 8px;          /*Top 8, Parem 8, Alt 50 (hind+osta nupp oleksid ühel kõrgusel all), Vasakult 8*/
+    margin-bottom: 16px;                /*Et 2 v-cardi omavahel koos ei oleks*/
+    background-color: #cbf1f1;
+    max-width: 300px;
+}
+
+
+
+
+
