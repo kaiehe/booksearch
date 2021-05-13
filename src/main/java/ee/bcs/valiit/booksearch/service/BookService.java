@@ -62,7 +62,7 @@ public class BookService {
         crawlerKriso.bookScrapingResultKriso();
     }
 
-    public void cconnectToKrisoCrawler2() {
+    public void connectToKrisoCrawler2() {
         crawlerKriso2.bookScrapingResultKriso2();
     }
 
