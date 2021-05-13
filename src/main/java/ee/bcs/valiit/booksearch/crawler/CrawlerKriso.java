@@ -28,7 +28,7 @@ public class CrawlerKriso {
 
     public void bookScrapingResultKriso() {
         int storeId = 3;
-        String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&lim=20&type=instock");
+        String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&lim=1000&type=instock");
         //muutsin linki - praegu pärib andmeid 100 raamatu kohta, esialgu oli 1000  tk
        // String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210620&lim=100&format=2&type=estonian&tt=&from=0");
         Document documentKriso = Jsoup.parse(contents);

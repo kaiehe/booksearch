@@ -25,7 +25,7 @@ public class CrawlerRaamatukoi {
         String url = "https://www.raamatukoi.ee/uued-raamatud?";
         List<BookData> bookDataList = new ArrayList<>();
 
-        for (int i = 1; i <= 37; i++) {
+        for (int i = 1; i <= 36; i++) {
             String newUrl = url + "p=" + i;
             String contents = WebReader.readWeb(newUrl);
             Document document = Jsoup.parse(contents);
@@ -47,10 +47,30 @@ public class CrawlerRaamatukoi {
                 Elements productUrl = e.getElementsByTag("strong");
                 String urlData = productUrl.get(0).getElementsByTag("a").get(0).attributes().get("href");
                 bookData.setUrlPage(urlData);
-
+                String productUrl2 = urlData;
+                String contents2 = WebReader.readWeb(productUrl2);
+                Document document1 = Jsoup.parse(contents2);
+                Elements elements1 = document1.select("tr");
+                for (Element e1 : elements1) {
+                    String listItem = e1.getElementsContainingText("köide").text();
+                    if (!listItem.isBlank()) {
+                        String format = listItem.substring(6);
+                        bookData.setFormat(format);
+                    }
+                }
                 bookData.setStoreId(storeId);
+                String productUrl3 = urlData;
+                String contents3 = WebReader.readWeb(productUrl2);
+                Document document2 = Jsoup.parse(contents3);
+                Elements elements2 = document2.select("tr");
+                for (Element e2 : elements2) {
+                    String listItem = e2.getElementsContainingText("EAN").text();
+                    if (!listItem.isBlank()) {
+                        String isbn = listItem.substring(4, listItem.length() - 4);
+                        bookData.setIsbn(isbn);
+                    }
+                }
                 bookDataList.add(bookData);
-                //System.out.println(autor + " " + bookTitle + " " + yearOfPublishing);
             }
         }
         bookRepository.deleteBooks(storeId);

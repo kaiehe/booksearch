@@ -34,7 +34,7 @@ public class CrawlerApollo {
         String url = "https://www.apollo.ee/raamatud/eestikeelsed-raamatud?";
         //String url = "https://www.apollo.ee/edetabel/raamatute-topid/eestikeelsete-raamatute-nadala-top-10?";
         List<BookData> bookDataList = new ArrayList<>();
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 469; i++) {
             String newUrl = url + "p=" + i;
             String contents = WebReader.readWeb(newUrl);
             Document document = Jsoup.parse(contents);
