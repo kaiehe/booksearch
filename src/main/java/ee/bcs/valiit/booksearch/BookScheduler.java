@@ -24,14 +24,20 @@ public class BookScheduler {
 
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
     public void sendKrisoBooks() {
+        System.out.println("Started kriso crawler");
         bookService.connectToKrisoCrawler();
+        System.out.println("Started kriso second crawler");
         bookService.connectToKrisoCrawler2();
+        System.out.println("Finished kriso crawler");
     }
 
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
     public void sendApolloToDatabase() {
+        System.out.println("Started apollo crawler");
         bookService.connectToApolloCrawler();
+        System.out.println("Started apollo second crawler");
         bookService.connectToApolloCrawler2();
+        System.out.println("Finished apollo crawler");
     }
 
 
