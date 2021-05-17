@@ -34,6 +34,9 @@ public class BookService {
     private CrawlerKriso2 crawlerKriso2;
 
     @Autowired
+    private CrawlerKrisoEng crawlerKrisoEng;
+
+    @Autowired
     private CrawlerRaamatukoi crawlerRaamatukoi;
 
     @Autowired
@@ -64,6 +67,10 @@ public class BookService {
 
     public void connectToKrisoCrawler2() {
         crawlerKriso2.bookScrapingResultKriso2();
+    }
+
+    public void connectToKrisoCrawlerEng() {
+        crawlerKrisoEng.bookScrapingResultKrisoEng();
     }
 
     public void connectToRaamatukoiCrawler() {

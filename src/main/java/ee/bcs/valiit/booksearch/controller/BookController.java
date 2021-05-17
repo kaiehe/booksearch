@@ -60,6 +60,7 @@ public class BookController {
     public void sendKrisoBooks() {
         bookService.connectToKrisoCrawler();
         bookService.connectToKrisoCrawler2();
+        bookService.connectToKrisoCrawlerEng();
     }
 
 
@@ -81,9 +82,9 @@ public class BookController {
 
     //BooksearchApplicationisse tuleb lisada @EnableScheduling, et ajastamine töötaks
 
-    public void sendAllBooksToDatabase() {
-        crawlerRaamatukoi.bookScrapingResultRaamatukoi();
-    }
+//    public void sendAllBooksToDatabase() {
+//        crawlerRaamatukoi.bookScrapingResultRaamatukoi();
+//    }
 
 
 

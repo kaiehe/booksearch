@@ -29,6 +29,9 @@ public class BookScheduler {
         System.out.println("Started kriso second crawler");
         bookService.connectToKrisoCrawler2();
         System.out.println("Finished kriso crawler");
+        System.out.println("Started kriso ENG crawler");
+        bookService.connectToKrisoCrawlerEng();
+        System.out.println("Finished kriso ENG crawler");
     }
 
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)

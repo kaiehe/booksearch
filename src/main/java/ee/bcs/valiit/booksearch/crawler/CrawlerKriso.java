@@ -45,7 +45,7 @@ public class CrawlerKriso {
             String author = e.getElementsByClass("book-author").text();
             bookData.setAuthor(author);
             String price = e.getElementsByClass("book-price").text();
-            price = price.substring(7, price.length() - 2);
+            price = price.substring(6, price.length() - 2);
             bookData.setPrice(price);
             String urlPage = productName.get(0).getElementsByTag("a").get(0).attributes().get("href");
             bookData.setUrlPage(urlPage);
@@ -58,14 +58,14 @@ public class CrawlerKriso {
             String yearofPublishing = bookFeatures.substring(13);
             String year = yearofPublishing.substring(0,4);
             bookData.setYearOfPublishing(year);
-            String bookTypeInitial = bookFeatures.substring(19);
-            String format = bookTypeInitial.substring(0,11);
-            bookData.setFormat(format);
-            bookDataList.add(bookData);
+//            String bookTypeInitial = bookFeatures.substring(19);
+//            String format = bookTypeInitial.substring(0,11);
+//            bookData.setFormat(format);
             Elements productImage = e.getElementsByClass("book-img-link");
             String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("data-original");
             String imgUrl = "www.kriso.ee"+imgLink;
             bookData.setUrlImage(imgUrl);
+            bookDataList.add(bookData);
         }
 
         bookRepository.deleteBooks(storeId);

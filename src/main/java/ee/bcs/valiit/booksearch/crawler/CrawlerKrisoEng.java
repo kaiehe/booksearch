@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CrawlerKriso2 {
+public class CrawlerKrisoEng {
 
     private BookRepository bookRepository;
 
-    public CrawlerKriso2(BookRepository bookRepository) {
+    public CrawlerKrisoEng(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
     public static void main(String[] args) {
@@ -24,17 +24,14 @@ public class CrawlerKriso2 {
 //        crawler.bookScrapingResultKriso();
     }
 
-    public void bookScrapingResultKriso2() {
+    public void bookScrapingResultKrisoEng() {
         int storeId = 3;
-        String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210627&lim=1000&type=instock&tt=&from=1000");
-        //muutsin linki - praegu pärib andmeid järgmise 500 raamatu kohta, esialgu oli 1000  tk
-       // String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210620&lim=100&format=2&type=estonian&tt=&from=0");
+        String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=english2&lim=1000&type=instock");
         Document documentKriso = Jsoup.parse(contents);
 
         List<BookData> bookDataList = new ArrayList<>();
 
         Elements elements = documentKriso.select("ul.book-list.clearfix .list-item");
-        //System.out.println(elements.size());
         for (Element e : elements) {
             BookData bookData = new BookData();
             Elements productName = e.getElementsByClass("book-desc-wrap");
@@ -54,16 +51,14 @@ public class CrawlerKriso2 {
             bookData.setStoreId(storeId);
             String bookFeatures = e.getElementsByClass("book-features").text();
             String yearofPublishing = bookFeatures.substring(13);
-            String year = yearofPublishing.substring(0,4);
+            String year = yearofPublishing.substring(0,11);
             bookData.setYearOfPublishing(year);
-            String bookTypeInitial = bookFeatures.substring(19);
-            String format = bookTypeInitial.substring(0,11);
-            bookData.setFormat(format);
-
+//            String bookTypeInitial = bookFeatures.substring(19);
+//            String format = bookTypeInitial.substring(0,11);
+//            bookData.setFormat(format);
             Elements productImage = e.getElementsByClass("book-img-link");
             String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("data-original");
             String imgUrl = "www.kriso.ee"+imgLink;
-            System.out.println(format + " " +  urlPage);
             bookData.setUrlImage(imgUrl);
             bookDataList.add(bookData);
         }
