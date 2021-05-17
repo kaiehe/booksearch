@@ -13,14 +13,14 @@ public class BookScheduler {
         this.bookService = bookService;
     }
 
-    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
-    public void sendRaamatukoiBooks() {
-        System.out.println("Started raamatukoi crawler");
-        bookService.connectToRaamatukoiCrawler();
-        System.out.println("Started raamatukoi second crawler");
-        bookService.connectToRaamatukoiCrawler2();
-        System.out.println("Finished raamatukoi crawler");
-    }
+//    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
+//    public void sendRaamatukoiBooks() {
+//        System.out.println("Started raamatukoi crawler");
+//        bookService.connectToRaamatukoiCrawler();
+//        System.out.println("Started raamatukoi second crawler");
+//        bookService.connectToRaamatukoiCrawler2();
+//        System.out.println("Finished raamatukoi crawler");
+//    }
 
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
     public void sendKrisoBooks() {
@@ -34,14 +34,14 @@ public class BookScheduler {
         System.out.println("Finished kriso ENG crawler");
     }
 
-    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
-    public void sendApolloToDatabase() {
-        System.out.println("Started apollo crawler");
-        bookService.connectToApolloCrawler();
-        System.out.println("Started apollo second crawler");
-        bookService.connectToApolloCrawler2();
-        System.out.println("Finished apollo crawler");
-    }
+//    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
+//    public void sendApolloToDatabase() {
+//        System.out.println("Started apollo crawler");
+//        bookService.connectToApolloCrawler();
+//        System.out.println("Started apollo second crawler");
+//        bookService.connectToApolloCrawler2();
+//        System.out.println("Finished apollo crawler");
+//    }
 
 
     //    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)

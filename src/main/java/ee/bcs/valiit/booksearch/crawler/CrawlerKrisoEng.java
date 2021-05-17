@@ -58,12 +58,12 @@ public class CrawlerKrisoEng {
 //            bookData.setFormat(format);
             Elements productImage = e.getElementsByClass("book-img-link");
             String imgLink = productImage.get(0).getElementsByTag("img").get(0).attributes().get("data-original");
-            String imgUrl = "www.kriso.ee"+imgLink;
+            String imgUrl = "https://d33318exxque5k.cloudfront.net/" + imgLink;
             bookData.setUrlImage(imgUrl);
             bookDataList.add(bookData);
         }
 
-        bookRepository.deleteBooks(storeId);
+//        bookRepository.deleteBooks(storeId);
 
         for(BookData bookData: bookDataList){
             bookRepository.saveBooks(bookData);

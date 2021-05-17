@@ -50,11 +50,11 @@ public class BookController {
                 return bookService.getListOfBooks(input);
     }
 
-    @GetMapping("/sendApolloBooks")
-    public void sendApolloToDatabase() {
-        bookService.connectToApolloCrawler();
-        bookService.connectToApolloCrawler2();
-    }
+//    @GetMapping("/sendApolloBooks")
+//    public void sendApolloToDatabase() {
+//        bookService.connectToApolloCrawler();
+//        bookService.connectToApolloCrawler2();
+//    }
 
     @GetMapping("/sendKrisoBooks")
     public void sendKrisoBooks() {
@@ -64,14 +64,14 @@ public class BookController {
     }
 
 
-    @GetMapping("/sendRaamatukoiBooks")
-    public void sendRaamatukoiBooks() {
-        System.out.println("Started raamatukoi crawler");
-        bookService.connectToRaamatukoiCrawler();
-        System.out.println("Started raamatukoi second crawler");
-        bookService.connectToRaamatukoiCrawler2();
-        System.out.println("Finished raamatukoi crawler");
-    }
+//    @GetMapping("/sendRaamatukoiBooks")
+//    public void sendRaamatukoiBooks() {
+//        System.out.println("Started raamatukoi crawler");
+//        bookService.connectToRaamatukoiCrawler();
+//        System.out.println("Started raamatukoi second crawler");
+//        bookService.connectToRaamatukoiCrawler2();
+//        System.out.println("Finished raamatukoi crawler");
+//    }
 
 //   // @GetMapping("/sendRaamatukoiBooks2")
 //   @Scheduled(fixedDelay = 1000 * 60 * 60)
