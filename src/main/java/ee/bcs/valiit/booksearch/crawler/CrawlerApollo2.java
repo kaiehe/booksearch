@@ -88,7 +88,7 @@ public class CrawlerApollo2 {
 
         // kui tahame teist korda crawleri tööle panna, siis tuleb esmalt tabel tühjendada:
 
-        bookRepository.deleteBooks(storeId);
+//        bookRepository.deleteBooks(storeId);
 
         for (BookData bookData : bookDataList) {
 

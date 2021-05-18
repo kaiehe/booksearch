@@ -73,7 +73,7 @@ public class CrawlerRaamatukoi2 {
                 bookDataList.add(bookData);
             }
         }
-        bookRepository.deleteBooks(storeId);
+//        bookRepository.deleteBooks(storeId);
 
         for (BookData bookData : bookDataList) {
             bookRepository.saveBooks(bookData);

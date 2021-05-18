@@ -55,7 +55,11 @@ public class CrawlerKriso2 {
             String bookFeatures = e.getElementsByClass("book-features").text();
             String yearofPublishing = bookFeatures.substring(13);
             String year = yearofPublishing.substring(0,4);
-            bookData.setYearOfPublishing(year);
+            if (!year.contains(",")) {
+                bookData.setYearOfPublishing(year);
+            } else {
+                continue;
+            }
 //            String bookTypeInitial = bookFeatures.substring(19);
 //            String format = bookTypeInitial.substring(0,11);
 //            bookData.setFormat(format);

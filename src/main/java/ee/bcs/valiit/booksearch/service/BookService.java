@@ -53,13 +53,13 @@ public class BookService {
         return bookRepository.getListOfBooks(input);
     }
 
-//    public void connectToApolloCrawler() {
-//        crawlerApollo.bookScrapingResultApollo();
-//    }
-//
-//    public void connectToApolloCrawler2() {
-//        crawlerApollo2.bookScrapingResultApollo2();
-//    }
+    public void connectToApolloCrawler() {
+        crawlerApollo.bookScrapingResultApollo();
+    }
+
+    public void connectToApolloCrawler2() {
+        crawlerApollo2.bookScrapingResultApollo2();
+    }
 
     public void connectToKrisoCrawler() {
         crawlerKriso.bookScrapingResultKriso();
@@ -73,13 +73,13 @@ public class BookService {
         crawlerKrisoEng.bookScrapingResultKrisoEng();
     }
 
-//    public void connectToRaamatukoiCrawler() {
-//        crawlerRaamatukoi.bookScrapingResultRaamatukoi();
-//    }
-//
-//    public void connectToRaamatukoiCrawler2() {
-//        crawlerRaamatukoi2.bookScrapingResultRaamatukoi2();
-//    }
+    public void connectToRaamatukoiCrawler() {
+        crawlerRaamatukoi.bookScrapingResultRaamatukoi();
+    }
+
+    public void connectToRaamatukoiCrawler2() {
+        crawlerRaamatukoi2.bookScrapingResultRaamatukoi2();
+    }
 
 
 }
