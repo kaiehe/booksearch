@@ -67,7 +67,7 @@ public class CrawlerKrisoEng {
             bookDataList.add(bookData);
         }
 
-//        bookRepository.deleteBooks(storeId);
+        bookRepository.deleteBooks(storeId);
 
         for(BookData bookData: bookDataList){
             bookRepository.saveBooks(bookData);

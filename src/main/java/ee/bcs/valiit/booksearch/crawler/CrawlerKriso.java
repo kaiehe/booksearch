@@ -31,12 +31,14 @@ public class CrawlerKriso {
         String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&lim=1000&type=instock");
         //muutsin linki - praegu pärib andmeid 500 raamatu kohta, esialgu oli 1000  tk
        // String contents = WebReader.readWeb("https://www.kriso.ee/cgi-bin/shop/searchbooks.html?database=estonian2&cd=20210620&lim=100&format=2&type=estonian&tt=&from=0");
+        //contents on põhimõtteliselt lehe HTML sisu
+        //document Kriso on Javale söödaval kujul HTML
         Document documentKriso = Jsoup.parse(contents);
 
         List<BookData> bookDataList = new ArrayList<>();
 
         Elements elements = documentKriso.select("ul.book-list.clearfix .list-item");
-        //System.out.println(elements.size());
+        System.out.println(elements.size());
         for (Element e : elements) {
             BookData bookData = new BookData();
             Elements productName = e.getElementsByClass("book-desc-wrap");

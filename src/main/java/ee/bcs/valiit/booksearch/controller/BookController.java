@@ -58,7 +58,7 @@ public class BookController {
 
     @GetMapping("/sendKrisoBooks")
     public void sendKrisoBooks() {
-        bookService.connectToKrisoCrawler();
+//        bookService.connectToKrisoCrawler();
         bookService.connectToKrisoCrawler2();
         bookService.connectToKrisoCrawlerEng();
     }

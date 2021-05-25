@@ -61,9 +61,9 @@ public class BookService {
         crawlerApollo2.bookScrapingResultApollo2();
     }
 
-    public void connectToKrisoCrawler() {
-        crawlerKriso.bookScrapingResultKriso();
-    }
+//    public void connectToKrisoCrawler() {
+//        crawlerKriso.bookScrapingResultKriso();
+//    }
 
     public void connectToKrisoCrawler2() {
         crawlerKriso2.bookScrapingResultKriso2();
